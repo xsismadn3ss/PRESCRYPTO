@@ -1,13 +1,14 @@
-import flet as ft
-from flet import colors
-from web3 import Web3
-from dotenv import load_dotenv
-from controls.Tittle import Tittle
-from controls.Textfield import TextFieldCustom
-from controls.View import View
-from controls.Button import CustomButton
 import os
 import time
+import flet as ft
+from web3 import Web3
+from flet import colors
+from dotenv import load_dotenv
+from controls.View import View
+from controls.Tittle import Tittle
+from controls.Button import CustomButton
+from controls.Textfield import TextFieldCustom
+from controls.Card import Card
 
 # load_dotenv()
 # infura_api = os.getenv('INFURA_API')
@@ -24,26 +25,6 @@ def main(page: ft.Page):
     page.title = "Prescrytpo"
     page.padding = 18
     page.auto_scroll = True
-
-    # def check_balance(e):
-    #     try:
-    #         wallet = wallet_token.value
-    #         # balance=w3.eth.get_balance(wallet)
-    #         dlg = ft.AlertDialog(
-    #             title=ft.Text(f"\nAvailable balance:\n{balance}ETH\n"),
-    #             on_dismiss=lambda e: print("Dialog dissmissed"),
-    #         )
-    #     except Exception as e:
-    #         dlg = ft.AlertDialog(
-    #             title=ft.Text(
-    #                 f"\nIncorrrect token\n\n{e}\n",
-    #             ),
-    #             on_dismiss=lambda e: print("Dialog dissmissed"),
-    #         )
-    #     wallet_token.value = ""
-    #     page.dialog = dlg
-    #     dlg.open = True
-    #     page.update()
 
     # VIEWS
     sign_up = View(
@@ -65,52 +46,20 @@ def main(page: ft.Page):
         height=700,
         aligment="center",
     )
-    lv = ft.ListView(
-        controls=[
-            ft.Container(
-                content=ft.Column(
-                    controls=[
-                        Tittle("Hello world"),
-                        TextFieldCustom("Write your name"),
-                        CustomButton("Enter"),
-                        Tittle("Hello world"),
-                        TextFieldCustom("Write your name"),
-                        CustomButton("Enter"),
-                        Tittle("Hello world"),
-                        TextFieldCustom("Write your name"),
-                        CustomButton("Enter"),
-                        Tittle("Hello world"),
-                        TextFieldCustom("Write your name"),
-                        CustomButton("Enter"),
-                    ],
-                ),
-                padding=8,
-                border_radius=10,
-            ),
-        ],
-        expand=1,
-        spacing=10,
-        padding=8,
-        auto_scroll=True,
-    )
 
     balance = View(controls=[Tittle("Balance"), CustomButton("Check balance")])
     explore = View(controls=[Tittle("Explore")])
     account = View(
         controls=[
             Tittle("Account"),
-            ft.Container(
-                content=ft.Column(
-                    controls=[ft.Text("Lore ipsum dolor", size=14)],
-                ),
+            Card(
+                controls=[
+                    ft.Text(value="Lorem ipsum dolor", size=14),
+                ],
                 bgcolor=colors.GREEN_900,
-                opacity=90,
-                border_radius=10,
-                padding=20,
-                height=200,
-                width=500,
+                data="Prescripcion1",
             ),
-        ]
+        ],
     )
 
     def change_route(e):
@@ -162,10 +111,7 @@ def main(page: ft.Page):
         on_change=change_route,
     )
 
-    page.add(
-        # pagina de inicio
-        balance
-    )
+    page.add(balance)
 
 
 ft.app(target=main, view=ft.AppView.WEB_BROWSER)
