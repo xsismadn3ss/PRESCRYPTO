@@ -7,6 +7,7 @@ from controls.Textfield import TextFieldCustom
 from controls.View import View
 from controls.Button import CustomButton
 import os
+import time
 
 # load_dotenv()
 # infura_api = os.getenv('INFURA_API')
@@ -22,6 +23,7 @@ password = "hello"
 def main(page: ft.Page):
     page.title = "Prescrytpo"
     page.padding = 18
+    page.auto_scroll = True
 
     # def check_balance(e):
     #     try:
@@ -44,35 +46,91 @@ def main(page: ft.Page):
     #     page.update()
 
     # VIEWS
-    sign_in = View(
+    sign_up = View(
         controls=[
-            Tittle("Sign In"),
+            Tittle("Sign up"),
             TextFieldCustom("Enter your token wallet"),
             TextFieldCustom("Paste your private key", True),
             TextFieldCustom("Set a pin", True),
+            CustomButton("Save account"),
         ],
+        aligment="center",
+    )
+    sign_in = View(
+        controls=[
+            Tittle("Sign In"),
+            TextFieldCustom("Write your pin"),
+            CustomButton("Enter"),
+        ],
+        height=700,
+        aligment="center",
+    )
+    lv = ft.ListView(
+        controls=[
+            ft.Container(
+                content=ft.Column(
+                    controls=[
+                        Tittle("Hello world"),
+                        TextFieldCustom("Write your name"),
+                        CustomButton("Enter"),
+                        Tittle("Hello world"),
+                        TextFieldCustom("Write your name"),
+                        CustomButton("Enter"),
+                        Tittle("Hello world"),
+                        TextFieldCustom("Write your name"),
+                        CustomButton("Enter"),
+                        Tittle("Hello world"),
+                        TextFieldCustom("Write your name"),
+                        CustomButton("Enter"),
+                    ],
+                ),
+                padding=8,
+                border_radius=10,
+            ),
+        ],
+        expand=1,
+        spacing=10,
+        padding=8,
+        auto_scroll=True,
     )
 
     balance = View(controls=[Tittle("Balance"), CustomButton("Check balance")])
     explore = View(controls=[Tittle("Explore")])
-    account = View(controls=[Tittle("Account")])
+    account = View(
+        controls=[
+            Tittle("Account"),
+            ft.Container(
+                content=ft.Column(
+                    controls=[ft.Text("Lore ipsum dolor", size=14)],
+                ),
+                bgcolor=colors.GREEN_900,
+                opacity=90,
+                border_radius=10,
+                padding=20,
+                height=200,
+                width=500,
+            ),
+        ]
+    )
 
     def change_route(e):
+        time.sleep(0.4)
         index = e.control.selected_index
-        if index == 1:
+        if index == 1:  # chance view to explore
+            route = explore
             page.clean()
-            page.add(explore)
-            page.update()
+            page.add(route)
 
-        elif index == 2:
+        elif index == 2:  # change view to account
+            route = account
             page.clean()
-            page.add(account)
-            page.update()
+            page.add(route)
 
-        elif index == 0:
+        elif index == 0:  # change view to balance
+            route = balance
             page.clean()
-            page.add(balance)
-            page.update()
+            page.add(route)
+        page.update()
 
     section = [
         ft.NavigationDestination(
@@ -110,4 +168,4 @@ def main(page: ft.Page):
     )
 
 
-ft.app(target=main, view=ft.AppView.FLET_APP)
+ft.app(target=main, view=ft.AppView.WEB_BROWSER)
