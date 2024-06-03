@@ -9,7 +9,7 @@ class View(ListView):
             controls (flet control): add a list of controls to fill your view
             aligment (_type_, optional): aligment contraint. Defaults to None.
             height (_type_, optional): hegih constraint. Defaults to None.
-            color (_type_, optional): background colr. Defaults to None.
+            color (_type_, optional): background color. Defaults to None.
         """
         super().__init__()
         self.padding = 10
