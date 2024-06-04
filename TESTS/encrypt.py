@@ -5,7 +5,6 @@ from cryptography.fernet import Fernet
 from console_clear import console_clear
 import json
 import base64
-import time
 import os
 
 

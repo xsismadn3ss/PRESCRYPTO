@@ -1,4 +1,4 @@
-from flet import Container, colors, Column, ListView
+from flet import Container, colors, Column, ListView, Row
 
 
 class View(ListView):
@@ -12,7 +12,6 @@ class View(ListView):
             color (_type_, optional): background color. Defaults to None.
         """
         super().__init__()
-        self.padding = 10
         self.height = height
         self.controls = [
             Container(
@@ -21,9 +20,9 @@ class View(ListView):
                 padding=10,
                 border_radius=10,
                 bgcolor=color,
+                # alignment="center",
             ),
         ]
         self.expand = 1
         self.spacing = 10
         self.padding = 8
-        self.auto_scroll = True

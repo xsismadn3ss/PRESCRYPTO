@@ -3,7 +3,7 @@ from flet import colors
 
 
 class TextFieldCustom(TextField):
-    def __init__(self, text: str, psswrd: bool = False):
+    def __init__(self, text: str, psswrd: bool = False, width=None):
         """Custom text field constructor
 
         Args:
@@ -16,3 +16,4 @@ class TextFieldCustom(TextField):
         self.border_color = colors.GREEN_600
         self.focused_border_color = colors.GREEN_300
         self.password = psswrd
+        self.width = width

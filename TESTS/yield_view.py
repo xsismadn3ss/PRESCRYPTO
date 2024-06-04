@@ -50,7 +50,7 @@ data = [
 ]
 
 
-def hellowordl(e):
+def helloworld(e):
     contenido = e.control.data
     print(contenido)
 
@@ -82,7 +82,7 @@ def generatePrescriptions():
         tarjeta = Card(
             controls=[titulo, fechas],
             bgcolor=ft.colors.GREEN_900,
-            on_click=hellowordl,
+            on_click=helloworld,
             data=contenido,
         )
         yield tarjeta
