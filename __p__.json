@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "medicamento": "ibuprofeno",
+      "fechas": ["2024/06/25", "2024/07/25", "2024/08/25"]
+    },
+    {
+      "medicamento": "acetaminofen",
+      "fechas": ["2024/06/25", "2024/07/25", "2024/08/25"]
+    },
+    {
+      "medicamento": "paracetamol",
+      "fechas": ["2024/06/25", "2024/07/25", "2024/08/25"]
+    },
+    {
+      "medicamento": "oxicodona",
+      "fechas": ["2024/06/25", "2024/07/25", "2024/08/25"]
+    }
+  ]
+}
