@@ -128,7 +128,7 @@ age = TextFieldCustom(
     text="enter your age".capitalize(), input_filter=ft.NumbersOnlyInputFilter()
 )
 profile_submit = CustomButton(text="Save", data="save_profile")
-profile_form = View_normal(
+profile_form = View_centered(
     controls=[Tittle("Edit profile"), name, lastname, age, profile_submit],
     alignment="center",
     height=600,
